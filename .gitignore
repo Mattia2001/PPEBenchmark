@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# Models
+*.pt
+*.onnx
+*.tflite
+
+# Datasets
+datasets/
+processed/
+models/
+reports/
+yolo/

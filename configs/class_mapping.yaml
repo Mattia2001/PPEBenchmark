@@ -1,0 +1,82 @@
+# PPE Benchmark Dataset
+# Unified class taxonomy and dataset-specific label mappings
+
+project:
+  name: PPEBenchmark
+  task: object_detection
+  annotation_format: yolo
+  version: 0.1
+
+target_classes:
+  0: person
+  1: helmet
+  2: safety_vest
+  3: gloves
+
+datasets:
+
+  sh17:
+    source_classes:
+      person: person
+      helmet: helmet
+      safety-vest: safety_vest
+      gloves: gloves
+
+    ignored_classes:
+      - head
+      - face
+      - glasses
+      - face-mask-medical
+      - face-guard
+      - ear
+      - ear-mufs
+      - hands
+      - foot
+      - shoes
+      - tools
+      - medical-suit
+      - safety-suit
+
+  pictor_ppe:
+    source_classes:
+      worker: person
+      hat: helmet
+      vest: safety_vest
+
+    ignored_classes: []
+
+  shel5k:
+    source_classes:
+      person: person
+      helmet: helmet
+
+    ignored_classes:
+      - head
+      - face
+
+  hard_hat_workers:
+    source_classes:
+      person: person
+      helmet: helmet
+
+    ignored_classes:
+      - head
+
+label_policy:
+  keep_only_target_classes: true
+  drop_images_without_target_classes: false
+  allow_empty_labels: true
+
+quality_control:
+  remove_duplicate_images: true
+  remove_corrupted_images: true
+  remove_invalid_boxes: true
+  min_box_area_ratio: 0.0001
+  max_box_area_ratio: 0.95
+
+split:
+  strategy: stratified_by_source
+  train: 0.70
+  val: 0.20
+  test: 0.10
+  random_seed: 42
